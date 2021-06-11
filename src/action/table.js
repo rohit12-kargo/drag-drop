@@ -14,10 +14,7 @@ export const addItemsToColumns = (itemData, columnId) => (dispatch, getState) =>
         const addItemToColumn = [...allColumns];
         const tableIdx = addItemToColumn.findIndex((t) => t.id === columnId);
         if (tableIdx !== -1 && Array.isArray(addItemToColumn[tableIdx].items)) {
-            const isPresent = addItemToColumn[tableIdx].items.find(item => item.id === itemData.id);
-            if (!isPresent) {
-                addItemToColumn[tableIdx].items.push(itemData);
-            }
+            addItemToColumn[tableIdx].items.push(itemData);
         }
         dispatch({
             type: ADD_TASK_TO_COLUMNS,

@@ -6,40 +6,6 @@ import uuid from "uuid/v4";
 
 import { getColumns, addItemsToColumns, moveItemFromColumnToColumn, updateItemIndexOFColumn } from '../../action/table';
 
-import './Dragbale.css';
-
-const itemsFromBackend = [
-  { id: 1, content: "First task" },
-  { id: 2, content: "Second task" },
-  { id: 3, content: "Third task" },
-  { id: 4, content: "Fourth task" },
-  { id: 5, content: "Fifth task" }
-];
-
-const itemsFromBackends = [
-  { id: 4, content: "Fourth task" },
-  { id: 5, content: "Fifth task" }
-];
-
-const columnsFromBackend = {
-  1: {
-    name: "Requested",
-    items: itemsFromBackend
-  },
-  2: {
-    name: "To do",
-    items: []
-  },
-  3: {
-    name: "In Progress",
-    items: []
-  },
-  4: {
-    name: "Done",
-    items: []
-  }
-};
-
 const DragbalePage = () => {
 
   const dispatch = useDispatch();
@@ -71,8 +37,7 @@ const DragbalePage = () => {
       destItems.splice(destination.index, 0, removed);
 
       dispatch(moveItemFromColumnToColumn(sourceColumn.id, removed.id));
-
-      const draGData = { id: destItems[0].id, content: destItems[0].content };
+      const draGData = { id: removed.id, content: removed.content };
       dispatch(addItemsToColumns(draGData, destColumn.id));
     } else {
       const column = columns.find(el => {
@@ -80,9 +45,7 @@ const DragbalePage = () => {
           return el;
         }
       });
-      debugger;
       const copiedItems = [...column.items];
-      debugger;
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
 

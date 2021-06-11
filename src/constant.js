@@ -1,9 +1,3 @@
-// info msg
-export const INFO_MASG = {
-    TBALE_NOT_FOUND: 'No Table Found',
-    MENUS_NOT_SELECTED: 'No Menus Yet Selected'
-};
-
 /**Redux types**/
 
 // Tables types

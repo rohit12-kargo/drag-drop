@@ -6,9 +6,7 @@ const initialState = {
         {
             id: uuid(),
             name: "Resources",
-            items: [
-                { id: uuid(), content: "First task" },
-            ]
+            items: []
         },
         {
             id: uuid(),
